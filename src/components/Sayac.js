@@ -24,7 +24,7 @@ ADIM 1:
 ADIM 2:
   'stil' nesnesinde 'color' niteliği sabit olarak "royalblue" olarak belirlenmiştir.
   Bunun yerine 'color' değerinin ne olması gerektiği, şu şekilde belirlenmelidir:
-  Eğer sayici çiftse "royalblue", değilse "crimson" olmalıdır.
+  Eğer sayici çiftse " ", değilse "crimson" olmalıdır.
 
 ADIM 3:
   JSX'teki bazı sabit kodlanmış bilgileri, kıvrımlı parantezler ({}) içinde enterpolasyonlu ifadelerle değiştirmemiz gerekiyor.
@@ -59,6 +59,7 @@ export default function Sayac() {
    setSayici(sayici-1)/* ADIM 5 */
   };
   const reset = () => {
+    setSayici(0)
   };
 
   const stil = {

@@ -37,16 +37,19 @@ import React, { useState } from 'react'; /* ADIM 0 */
 
 export default function Input() {
   const [inputDeger,setinputDeger]= useState("")/* ADIM 1 */
+  
 	
   const inputuDeğiştir = evt => {
     // When the input changes, its whole value can be found inside the event object.
     // Log out the synthetic event object 'evt' and see for yourself.
     const { value } = evt.target;
+    console.log("input yazilan:",value)
 	
    setinputDeger(value) /* ADIM 4 */
   };
   const reset = () => {
     setinputDeger("")/* ADIM 5 */
+    
   };
 
   const stil = {
@@ -58,9 +61,9 @@ export default function Input() {
   return (
     <div className='widget-input container'>
       <h2>Input</h2>
-      <div id='output' style={stil}></div> {setinputDeger(value.toUpperCase())/* ADIM 3 */}
+      <div id='output' style={stil}>{inputDeger}</div> {setinputDeger(value.toUpperCase())/* ADIM 3 */}
       <div>
-		<input id='input' type='text' onChange={inputuDeğiştir} /> {/* ADIM 6 */}
+		<input id='input' type='text' onChange={inputuDeğiştir} value={inputDeger}/> {/* ADIM 6 */}
         <button id='resetInput' onClick={reset}>Reset</button>
       </div>
     </div>

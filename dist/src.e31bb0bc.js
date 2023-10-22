@@ -28929,7 +28929,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; } /*
                                                                       ADIM 2:
                                                                         'stil' nesnesinde 'color' niteliği sabit olarak "royalblue" olarak belirlenmiştir.
                                                                         Bunun yerine 'color' değerinin ne olması gerektiği, şu şekilde belirlenmelidir:
-                                                                        Eğer sayici çiftse "royalblue", değilse "crimson" olmalıdır.
+                                                                        Eğer sayici çiftse " ", değilse "crimson" olmalıdır.
                                                                       
                                                                       ADIM 3:
                                                                         JSX'teki bazı sabit kodlanmış bilgileri, kıvrımlı parantezler ({}) içinde enterpolasyonlu ifadelerle değiştirmemiz gerekiyor.
@@ -28965,7 +28965,9 @@ function Sayac() {
     setSayici(sayici - 1); /* ADIM 5 */
   };
 
-  var reset = function reset() {};
+  var reset = function reset() {
+    setSayici(0);
+  };
   var stil = {
     fontSize: '1.5em',
     marginBottom: '0.3em',
@@ -29049,6 +29051,7 @@ function Input() {
     // When the input changes, its whole value can be found inside the event object.
     // Log out the synthetic event object 'evt' and see for yourself.
     var value = evt.target.value;
+    console.log("input yazilan:", value);
     setinputDeger(value); /* ADIM 4 */
   };
 
@@ -29067,10 +29070,11 @@ function Input() {
   }, /*#__PURE__*/_react.default.createElement("h2", null, "Input"), /*#__PURE__*/_react.default.createElement("div", {
     id: "output",
     style: stil
-  }), " ", setinputDeger(value.toUpperCase()) /* ADIM 3 */, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("input", {
+  }, inputDeger), " ", setinputDeger(value.toUpperCase()) /* ADIM 3 */, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("input", {
     id: "input",
     type: "text",
-    onChange: inputuDeğiştir
+    onChange: inputuDeğiştir,
+    value: inputDeger
   }), " ", /*#__PURE__*/_react.default.createElement("button", {
     id: "resetInput",
     onClick: reset
@@ -29153,7 +29157,7 @@ function RuhHalleri() {
   }, /*#__PURE__*/_react.default.createElement("h2", null, "RuhHalleri"), /*#__PURE__*/_react.default.createElement("div", {
     id: "ruhHali",
     style: stil
-  }, ruhHali), " ", /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", {
+  }, ruhHali), " ", " ", /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", {
     id: "mutluEt",
     onClick: mutluEt
   }, "Mutlu Et"), /*#__PURE__*/_react.default.createElement("button", {
@@ -29229,7 +29233,7 @@ function Dondurucu() {
 
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "widget-spinner container"
-  }, /*#__PURE__*/_react.default.createElement("h2", null, "D\xF6nd\xFCr\xFCc\xFC"), true && /*#__PURE__*/_react.default.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("h2", null, "D\xF6nd\xFCr\xFCc\xFC"), showSpinner && /*#__PURE__*/_react.default.createElement("div", {
     id: "d\xF6nd\xFCr\xFCc\xFC",
     className: "spinner"
   }, "--+--") /* ADIM 2 */, /*#__PURE__*/_react.default.createElement("button", {
@@ -29246,22 +29250,26 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = Kareler;
 var _react = _interopRequireDefault(require("react"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-/*
-Kareler Talimaları
-
-Aşağıdaki kısa videoyu izleyin:
-https://www.ergineer.com/assets/materials/a664dfe7-kareler.gif
-
-Bu bileşen, bir yandan "kare idlerinin" listesinin kaydını tutar,
-ve şu anda aktif olan id yi tutar. Yani iki dilim kullanılacak!
-Biri kareleri oluşturmak için kullanılır, diğeri ise id yi tutmak için,
-böylece bileşen hangi karenin o anda aktif olduğunu bilir.
-
-Herhangi bir noktada yalnızca bir kare aktif olabilir (ya da hiçbiri)
-
-Aşaıdaki yorumları takip edin.
-*/
-
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; } /*
+                                                                      Kareler Talimaları
+                                                                      
+                                                                      Aşağıdaki kısa videoyu izleyin:
+                                                                      https://www.ergineer.com/assets/materials/a664dfe7-kareler.gif
+                                                                      
+                                                                      Bu bileşen, bir yandan "kare idlerinin" listesinin kaydını tutar,
+                                                                      ve şu anda aktif olan id yi tutar. Yani iki dilim kullanılacak!
+                                                                      Biri kareleri oluşturmak için kullanılır, diğeri ise id yi tutmak için,
+                                                                      böylece bileşen hangi karenin o anda aktif olduğunu bilir.
+                                                                      
+                                                                      Herhangi bir noktada yalnızca bir kare aktif olabilir (ya da hiçbiri)
+                                                                      
+                                                                      Aşaıdaki yorumları takip edin.
+                                                                      */
 //Bu değişkeni YALNIZCA bir durum dilimini yüklemek için kullanın!
 var KareIdListesi = ['sqA', 'sqB', 'sqC', 'sqD'];
 function Kareler() {
@@ -29270,17 +29278,29 @@ function Kareler() {
   // kareyi gözlemleyecek. Sayfa yüklendiğinde aktif kare olmayacak,
   // yani  'aktifKare' null olmalı.
 
+  var _useState = useState(null),
+    _useState2 = _slicedToArray(_useState, 2),
+    aktifKare = _useState2[0],
+    setAktifKare = _useState2[1];
   var ClassAdiAl = function ClassAdiAl(id) {
     // Bu bir click handler değildir, JSX içinde kullanılan bir yardımcıdır(helper).(aşağıya bakın)
     // Eğer argüman olarak verilen id aktif kare state'indeki id ile eşleşirse, class adı 'active' olan bir string döndürecek
     // diğer durumlar için boş döndürecek.
     // Etkisini görmek için kareye sağ tıklayın ve "öğeyi inceleyin".
+    if (id == aktifKare) {
+      return 'active';
+    }
     return '';
   };
   var AktifEt = function AktifEt(id) {
     // Bu bir _satır içinden çağırılmış_ click handler yardımcısıdır.
     // id bağımsız değişkenini, stateteki aktif id olacak şekilde ayarlayın
     // eğer zaten aktifse, o zaman önce state i resetlemeliyiz.
+    if (aktifKare == id) {
+      setAktifKare(null);
+    } else {
+      setAktifKare(id);
+    }
   };
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "widget-squares container"
@@ -29309,21 +29329,27 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = Programcilar;
 exports.enIyilerListesi = void 0;
-var _react = _interopRequireDefault(require("react"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-/*
-Programcilar Talimatları
-
-Şu kısa videoyu izleyin:
-https://www.ergineer.com/assets/materials/a664dfe7-programcilar.gif
-
-Bu bileşen, bir yandan programlama alanındaki öncülerin bir listesini,
-ve diğer tarafta o anda öne çıkan programcının idsini izler. Yani 2 adet state dilimi!
-Aynı zaman içinde yalnız bir harika programcıyı öne çıkarabiliriz.
-
-Yorumları takip edin.
-*/
-
+var _react = _interopRequireWildcard(require("react"));
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; } /*
+                                                                      Programcilar Talimatları
+                                                                      
+                                                                      Şu kısa videoyu izleyin:
+                                                                      https://www.ergineer.com/assets/materials/a664dfe7-programcilar.gif
+                                                                      
+                                                                      Bu bileşen, bir yandan programlama alanındaki öncülerin bir listesini,
+                                                                      ve diğer tarafta o anda öne çıkan programcının idsini izler. Yani 2 adet state dilimi!
+                                                                      Aynı zaman içinde yalnız bir harika programcıyı öne çıkarabiliriz.
+                                                                      
+                                                                      Yorumları takip edin.
+                                                                      */
 /* ADIM 0  */
 
 // Bu değişkeni YALNIZCA bir state dilimini başlatmak için kullanın!
@@ -29353,12 +29379,31 @@ function Programcilar() {
   // İki state dilimine ihtiyacımız olduğundan, state hooku iki kez kullanmamız gerekecek..
   // Bir yanda programcılar listesi, diğer yanda öne çıkan programcının idsi.
 
+  var _useState = (0, _react.useState)(null),
+    _useState2 = _slicedToArray(_useState, 2),
+    secilenProgramci = _useState2[0],
+    setSecilen = _useState2[1];
   var oneCikaninIsmi = function oneCikaninIsmi() {
     // Bunu sona bırakın!
     // Bu bir event handler değil, yardımcıdır. Kullanımını JSX'te gözlemleyin.
     // Öne çıkan geliştiricinin _isim_ adını döndürmek için her iki state dilimini kullanacak.
     // Closureların güzelliği, argümanlar yoluyla bilgi enjekte etmeye gerek kalmadan programın 
     // bu bölgesinden her iki state dilimini de "görebilmemiz"dir.
+    var _iterator = _createForOfIteratorHelper(enIyilerListesi),
+      _step;
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var dev = _step.value;
+        if (dev.ip == secilenProgramci) {
+          return dev.isim;
+        }
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+    return "";
   };
   var stil = {
     fontSize: '1.5em',
@@ -29380,16 +29425,18 @@ function Programcilar() {
       className: "programmer",
       key: dev.id
     }, dev.isim, " ", /*#__PURE__*/_react.default.createElement("button", {
-      onClick: function onClick() {/* burada dev.id 'yi öne çıkan id'ye atayın */}
+      onClick: function onClick() {
+        secilenProgramci(dev.id);
+      }
     }, "Kutla"));
-  })), /*#__PURE__*/_react.default.createElement("div", {
+  })), "Selected Programci ID:", secilenProgramci, /*#__PURE__*/_react.default.createElement("div", {
     id: "featured",
     style: stil
   },
   // Üçlüler, bir şeyin "gerçekliğine" bağlı olarak "bir şeyi veya diğerini" ifade etmek için harikadır..
   // Sözde-kod: öne çıkan true ise metin 1'i oluşturun, aksi takdirde metin 2'yi oluşturun..
   // Sabit kodlanmış false'u doğru değişkenle değiştirin.
-  false ? "\uD83C\uDF89 Hadi ".concat(oneCikaninIsmi(), "'\u0131 kutlayal\u0131m! \uD83E\uDD73") : 'Harika bir programcı seçin'));
+  secilenProgramci ? "\uD83C\uDF89 Hadi ".concat(oneCikaninIsmi(), "'\u0131 kutlayal\u0131m! \uD83E\uDD73") : 'Harika bir programcı seçin'));
 }
 },{"react":"../node_modules/react/index.js"}],"index.js":[function(require,module,exports) {
 "use strict";
@@ -29431,7 +29478,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60174" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53345" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

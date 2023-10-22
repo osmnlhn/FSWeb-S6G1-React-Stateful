@@ -27,12 +27,17 @@ export default function Kareler() {
   // 'aktifKare' olmak üzere. Birisi kare idlerini _dizi_ olarak tutacak, diğeri ise aktif olan
   // kareyi gözlemleyecek. Sayfa yüklendiğinde aktif kare olmayacak,
   // yani  'aktifKare' null olmalı.
+
+  const [aktifKare, setAktifKare]= useState(null);
 	
   const ClassAdiAl = id => {
     // Bu bir click handler değildir, JSX içinde kullanılan bir yardımcıdır(helper).(aşağıya bakın)
     // Eğer argüman olarak verilen id aktif kare state'indeki id ile eşleşirse, class adı 'active' olan bir string döndürecek
     // diğer durumlar için boş döndürecek.
     // Etkisini görmek için kareye sağ tıklayın ve "öğeyi inceleyin".
+    if (id==aktifKare) {
+      return 'active';
+    }
 	return ''
   };
 
@@ -40,6 +45,13 @@ export default function Kareler() {
     // Bu bir _satır içinden çağırılmış_ click handler yardımcısıdır.
     // id bağımsız değişkenini, stateteki aktif id olacak şekilde ayarlayın
     // eğer zaten aktifse, o zaman önce state i resetlemeliyiz.
+ if (aktifKare==id) {
+setAktifKare(null) }
+
+else{
+  setAktifKare(id);
+}
+
   };
 
   return (
